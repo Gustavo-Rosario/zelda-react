@@ -6,19 +6,19 @@ import { IPropIcon } from "../interfaces";
 import { themeSettings } from "../initial.config.json";
 
 const IconBody = styled.div`
-    margin: 10px 0;
     padding: 0 10px;
-    overflow: auto;
+    overflow: hidden;
     position: relative;
+    transition: 0.2s;
     cursor: pointer;
 
     & svg{
-        opacity: 0.7;
+        opacity: 0.6;
         transition: 0.2s;
     }
 
-    & svg:hover {
-        opacity: 1;
+    &:hover {
+        & svg {opacity: 1;}
         transform: scale(1.2);
     }
 `;

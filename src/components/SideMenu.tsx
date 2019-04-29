@@ -1,6 +1,6 @@
 /// <reference path="../interfaces.d.ts" />
 
-import * as React from "react";
+import React, { Component } from "react";
 import styled from 'styled-components';
 import SideOption from "./SideOption";
 import { IPropsSideMenu } from "../interfaces";
@@ -17,7 +17,7 @@ const SideContainer = styled.main`
 
 const ConfigIcon = styled.div`
     transition: 1s;
-
+    margin-top: 1rem;
     & svg:hover{
         transform: rotate(90deg);
     }
@@ -34,17 +34,15 @@ const MainBody = styled.main`
 
 `;
 
-
-
-export default class SideMenu extends React.Component<IPropsSideMenu>{
+export default class SideMenu extends Component<IPropsSideMenu>{
 
     state = {
         hideMenu: true
     }
 
     renderOptions = () => {
-        return this.props.options.map((opt,i) => (
-            <SideOption key={"opt"+i} title={opt.title} bgColor={opt.bgColor} />
+        return this.props.options.map(({title, bgColor, content},i) => (
+            <SideOption key={"opt"+i} title={title} bgColor={bgColor} content={content} />
         ));
     }
 

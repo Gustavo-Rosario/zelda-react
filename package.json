@@ -11,6 +11,8 @@
     "@types/react": "^16.8.14",
     "@types/react-dom": "16.8.4",
     "@types/styled-components": "^4.1.14",
+    "edit-json-file": "^1.2.1",
+    "firebase": "^5.10.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0",

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
 import IconOption from './IconOption';
-import { faGamepad } from '@fortawesome/free-solid-svg-icons';
+import { IPropIcon } from '../interfaces';
 
 
 const DesktopMain = styled.main`
@@ -19,10 +19,10 @@ const MainMenu = styled.div`
   overflow: hidden;
 `;
 
-export default class Desktop extends Component {
+export default class Desktop extends Component<{ options: IPropIcon[] }, any> {
 
     renderOptions = () => {
-        return Array.from("qwert").map((a,i)=> <IconOption key={i} icon={faGamepad} />)
+        return this.props.options.map((opt,i)=> <IconOption key={i} icon={opt.icon} />)
     }
 
     render() {

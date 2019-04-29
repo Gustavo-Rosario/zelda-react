@@ -2,15 +2,27 @@
 import './App.css';
 import React, { Component } from 'react';
 import SideMenu from './components/SideMenu';
-import wp from './wallpapers/zelda.pattern.wp.jpg';
 import styled from 'styled-components';
 import Desktop from './components/Desktop';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faStroopwafel, faGamepad } from '@fortawesome/free-solid-svg-icons';
-import { IOption } from './interfaces';
-import config from "./initial.config.json";
+import { faCamera, faGamepad, faHome, faFilm, faMusic, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { IOption, IPropIcon } from './interfaces';
+import IconOption from './components/IconOption';
+import firebase from 'firebase';
 
-library.add(faStroopwafel,faGamepad)
+
+const config = {
+    apiKey: "AIzaSyDYzZ8uQ9kl64kloH4ieVnPNXCe_n_1urc",
+    authDomain: "zelda-react.firebaseapp.com",
+    databaseURL: "https://zelda-react.firebaseio.com",
+    projectId: "zelda-react",
+    storageBucket: "zelda-react.appspot.com",
+    messagingSenderId: "579345432955"
+  }
+
+const appWp = require("../src/wallpapers/"+setting.getSetting("themeSettings.wallpaper"));
+
+library.add(faGamepad);
 
 function stuc<T>(El: string = 'div') {
     type PropType = T & { children?: JSX.Element[], className?: string }
@@ -21,7 +33,10 @@ const Container = stuc<{image?: string}>()
 
 const ImgBg = styled(Container)`
     background-image: url(${props => props.image || "https://ctl.s6img.com/society6/img/jLuG0p7p4t3yMSqXnybqxZFOeso/w_700/shams/swatch/~artwork,fw_6105,fh_3500,fy_-411,iw_6105,ih_4322/s6-original-art-uploads/society6/uploads/misc/c0d5427cc18f4013b6f8237de0c404a2/~~/legend-of-zelda-pattern471786-shams.jpg" });
-    filter: opacity(.9);
+    background-size: cover;
+    background-color: ${themeSettings.colors.secondary };
+    background-position: center center;
+    background-repeat: no-repeat;
     height: 100%;
     width: 100%;
     position: fixed;
@@ -39,19 +54,42 @@ class App extends React.Component<any, any>{
             title: "Background"
         },{
             title: "Colors",
-            bgColor: "rebeccapurple"
+            bgColor: "rebeccapurple",
+            content: (<IconOption icon={faGamepad}/>)
         }
+    ];
+
+    optionsMenuDesktop: IPropIcon[] = [
+        {
+            icon: faHome
+        },
+        {
+            icon: faCamera
+        },
+        {
+            icon: faFilm
+        },
+        {
+            icon: faMusic
+        },
+        {
+            icon: faGamepad
+        },
+        {
+            icon: faPowerOff
+        }
+
     ];
 
     render (){
         return ( 
             <div className="App" >
                 {/* Fundo */}
-                <ImgBg image={wp} />
+                <ImgBg image={appWp} />
                 {/* Menu lateral */}
                 <SideMenu options={this.optionsMenu}/>
                 {/* Area de trabalaho */}
-                <Desktop/> 
+                <Desktop options={this.optionsMenuDesktop}/> 
             </div>
         );
     }

@@ -1,4 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { Component } from "react";
+import { JSXElement } from "@babel/types";
 
 /**
  * Interface for SideMenu properties 
@@ -10,7 +12,8 @@ interface IPropsSideMenu{
 interface IOption{
     title: string,
     bgColor?: string,
-    icon?: string
+    icon?: string,
+    content?: (Element | Component | JSXElement | JSX.Element )
 }
 
 interface IPropIcon{
