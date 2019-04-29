@@ -9,18 +9,12 @@ import { faCamera, faGamepad, faHome, faFilm, faMusic, faPowerOff } from '@forta
 import { IOption, IPropIcon } from './interfaces';
 import IconOption from './components/IconOption';
 import firebase from 'firebase';
+import appConfig from "./app.config.json";
 
 
-const config = {
-    apiKey: "AIzaSyDYzZ8uQ9kl64kloH4ieVnPNXCe_n_1urc",
-    authDomain: "zelda-react.firebaseapp.com",
-    databaseURL: "https://zelda-react.firebaseio.com",
-    projectId: "zelda-react",
-    storageBucket: "zelda-react.appspot.com",
-    messagingSenderId: "579345432955"
-  }
+const config = appConfig.firebase;
 
-const appWp = require("../src/wallpapers/"+setting.getSetting("themeSettings.wallpaper"));
+// const appWp = require("../src/wallpapers/"+setting.getSetting("themeSettings.wallpaper"));
 
 library.add(faGamepad);
 
